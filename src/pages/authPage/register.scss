@@ -1,0 +1,90 @@
+@use '../../scss/' as *;
+
+.register {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
+
+  .register__form {
+    transition: all 3s ease-in;
+    width: 432px;
+    position: relative;
+    background-color: $white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: $box-shadow;
+    padding: 20px;
+
+    .register__header {
+      position: relative;
+      width: 100%;
+      padding-bottom: 20px;
+
+      .close {
+        position: absolute;
+        right: 0px;
+        top: 5px;
+      }
+
+      .register__title {
+        font-size: 32px;
+        color: #1c1e21;
+        font-weight: 600;
+        line-height: 40px;
+      }
+
+      .register__desc {
+        color: #606770;
+        font-size: 15px;
+        line-height: 20px;
+      }
+    }
+
+    .register__header::before {
+      content: '';
+      position: absolute;
+      height: 1px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $divider;
+    }
+
+    .register__post {
+      margin-top: 20px;
+      .register__input {
+        input {
+          font-size: 18px;
+          outline: none;
+          padding: 12px;
+          width: 100%;
+          border-radius: 5px;
+          border: 1px solid $divider;
+          margin-bottom: 20px;
+        }
+      }
+
+      .register__btn {
+        button {
+          width: 100%;
+          padding: 13px;
+          text-align: center;
+          font-size: 20px;
+          color: $white;
+          border: none;
+          border-radius: 5px;
+          background-color: $blue-btn;
+          cursor: pointer;
+        }
+      }
+
+      .register__link {
+        font-size: 13px;
+      }
+    }
+  }
+}

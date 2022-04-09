@@ -1,0 +1,93 @@
+@use '../../scss/' as *;
+
+.login {
+  width: 980px;
+  margin: 0 auto;
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+
+  .login__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    img {
+      width: 300px;
+    }
+
+    p {
+      color: #1c1e21;
+      font-size: 24px;
+    }
+  }
+
+  .login__right {
+    height: 500px;
+    flex: 1;
+
+    .login__form {
+      margin: 0 auto;
+      background-color: $white;
+      border-radius: 10px;
+      width: 396px;
+      padding: 20px;
+      box-shadow: $box-shadow;
+
+      .login__input {
+        input {
+          font-size: 18px;
+          outline: none;
+          padding: 15px;
+          width: 100%;
+          border-radius: 5px;
+          border: 1px solid $divider;
+          margin-bottom: 20px;
+        }
+      }
+
+      .login__btn {
+        button {
+          width: 100%;
+          padding: 13px;
+          text-align: center;
+          font-size: 20px;
+          color: $white;
+          border: none;
+          border-radius: 5px;
+          background-color: $blue-btn;
+          cursor: pointer;
+        }
+      }
+
+      .login__link {
+        padding: 20px 0;
+        text-align: center;
+        a {
+          text-align: center;
+        }
+      }
+
+      .divider {
+        height: 1px;
+        width: 100%;
+        background-color: $divider;
+      }
+
+      .register__btn {
+        margin-top: 20px;
+        text-align: center;
+        .registerBtn {
+          padding: 15px;
+          background-color: #42b72a;
+          text-align: center;
+          border: none;
+          color: $white;
+          border-radius: 5px;
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

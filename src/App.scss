@@ -1,0 +1,40 @@
+@use './scss/' as *;
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+
+@font-face {
+  font-family: Helvetica;
+  src: url('./font/Helvetica/helveticaneue.ttf');
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+html {
+  background-color: $body-bg;
+  font-size: 100%;
+
+  @include tablet {
+    font-size: 95%;
+  }
+
+  @include mobile {
+    font-size: 90%;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: 0;
+  color: unset;
+}

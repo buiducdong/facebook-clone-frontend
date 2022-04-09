@@ -1,0 +1,87 @@
+@use '../../scss/' as *;
+
+.post {
+  background-color: $white;
+  margin-top: 20px;
+  box-shadow: $box-shadow;
+  border-radius: 10px;
+  width: 590px;
+
+  .post__top {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+
+    .post__info {
+      flex: 1;
+      margin-left: 10px;
+
+      .post__date {
+        font-size: 12px;
+      }
+    }
+
+    .post__icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .post__icon:hover {
+      background-color: $body-bg;
+    }
+  }
+
+  .post__middle {
+    .post__desc {
+      padding: 0 20px;
+    }
+
+    .post__img {
+      object-fit: cover;
+    }
+  }
+
+  .post__bottom {
+    padding: 5px;
+    color: $primary-text;
+    .post__display {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: $divider;
+      width: 100%;
+      margin: 5px auto;
+    }
+
+    .post__action {
+      display: flex;
+
+      .post__action-icon {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 0;
+        cursor: pointer;
+        border-radius: 4px;
+
+        span {
+          margin-left: 5px;
+        }
+      }
+
+      .post__action-icon:hover {
+        background-color: $body-bg;
+      }
+    }
+  }
+}

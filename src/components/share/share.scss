@@ -1,0 +1,66 @@
+@use '../../scss/' as *;
+
+.share {
+  box-shadow: $box-shadow;
+  display: block;
+  background-color: $white;
+  width: 590px;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  color: $primary-text;
+  font-size: 14px;
+
+  .share__top {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $divider;
+
+    label {
+      margin-left: 10px;
+      background-color: $body-bg;
+      padding: 10px;
+      border-radius: 20px;
+      flex: 1;
+    }
+    label:hover {
+      background-color: $gray-icon;
+    }
+  }
+
+  .share__bootom {
+    display: flex;
+    padding-top: 15px;
+
+    .share__icon {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 0;
+      border-radius: 8px;
+      cursor: pointer;
+
+      .live__icon {
+        color: rgb(223, 59, 86);
+      }
+
+      .video__icon {
+        color: rgb(25, 197, 54);
+      }
+
+      .emoi__icon {
+        color: orange;
+      }
+
+      span {
+        margin-left: 5px;
+      }
+    }
+
+    .share__icon:hover {
+      background-color: $body-bg;
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@use '../../scss/' as *;
+
+.rightbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.rightbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.rightbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.rightbar:hover::-webkit-scrollbar-thumb {
+  background: rgb(183, 185, 187);
+}
+
+.rightbar {
+  width: calc(#{$sidebar-width} - 20px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: sticky;
+  height: calc(100vh - #{$header-heigh});
+  z-index: 1;
+  font-size: 16px;
+  top: $header-heigh;
+
+  .rightbar__top {
+    padding: 10px;
+    position: relative;
+
+    .rightbar__top-title {
+      font-size: 16px;
+      color: $secondary-text;
+    }
+
+    .rightbar__top-web {
+      display: flex;
+      padding: 10px 0;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 10px;
+
+      img {
+        width: 150px;
+        border-radius: 10px;
+        margin-right: 20px;
+      }
+
+      .rightbar__top-info {
+        display: flex;
+        flex-direction: column;
+
+        .rightbar__top-name {
+          font-size: 16px;
+          color: $black;
+        }
+        .rightbar__top-link {
+          color: $secondary-text;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .rightbar__top-web:hover {
+      background-color: $gray-icon;
+    }
+  }
+
+  .rightbar__top::before {
+    position: absolute;
+    content: '';
+    height: 1px;
+    top: 100%;
+    left: 10px;
+    right: 10px;
+    width: 100%;
+    background-color: $divider;
+  }
+
+  .rightbar__middle {
+    padding: 10px;
+    .rightbar__middle-header {
+      display: flex;
+      align-items: center;
+      .rightbar__middle-title {
+        font-size: 16px;
+        color: $secondary-text;
+      }
+      .rightbar__middle-icon {
+        display: flex;
+        .iconn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-left: 5px;
+          cursor: pointer;
+        }
+
+        .iconn:hover {
+          background-color: $gray-icon;
+        }
+      }
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .rightbarList {
+      .rightbarListItem {
+        display: flex;
+        align-items: center;
+        padding: 8px 10px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.1s ease;
+
+        span {
+          margin-left: 10px;
+        }
+      }
+
+      .rightbarListItem:hover {
+        background-color: #e4e6eb;
+      }
+    }
+  }
+}
