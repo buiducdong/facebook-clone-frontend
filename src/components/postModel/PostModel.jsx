@@ -9,15 +9,19 @@ import PermMediaIcon from '@mui/icons-material/PermMedia';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import axios from 'axios';
+import { CircularProgress } from '@mui/material';
 
 const PostModel = ({ handleCloseForm }) => {
+  //redux
   const auth = useSelector((state) => state.auth);
   const token = useSelector((state) => state.token);
   const { user } = auth;
 
+  // state
   const [showAddImg, setShowAddImg] = useState(false);
-
   const [file, setFile] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const desc = useRef();
 
   const handleCloseFormm = () => {
@@ -37,6 +41,7 @@ const PostModel = ({ handleCloseForm }) => {
   };
   const handleSubmitt = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const newPost = {
         userId: user._id,
@@ -53,6 +58,7 @@ const PostModel = ({ handleCloseForm }) => {
       await axios.post('/post/create', newPost, {
         headers: { Authorization: token },
       });
+      setLoading(false);
       window.location.reload();
     } catch (err) {
       return err.response.data.msg;
@@ -141,7 +147,9 @@ const PostModel = ({ handleCloseForm }) => {
             </div>
           </div>
           <div className='post__bottom'>
-            <button type='submit'>Đăng</button>
+            <button type='submit' disabled={loading ? true : false}>
+              {loading ? <CircularProgress size={10} /> : 'Đăng'}
+            </button>
           </div>
         </form>
       </div>

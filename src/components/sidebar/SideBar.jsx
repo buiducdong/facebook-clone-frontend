@@ -20,7 +20,7 @@ const SideBar = () => {
       <div className='sidebar__top'>
         <ul className='sidebarList'>
           <li className='sidebarListItem'>
-            <Avatar imgSrc={user.avatar} />
+            <Avatar imgsrc={user.avatar} />
             <span>{auth ? user.username : 'yourname'}</span>
           </li>
           <li className='sidebarListItem'>

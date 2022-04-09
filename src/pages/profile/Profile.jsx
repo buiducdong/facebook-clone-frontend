@@ -24,17 +24,14 @@ const Profile = () => {
   const [followed, setFollowed] = useState(authUser.followings?.includes(user?._id));
   useEffect(() => {
     const getUserInfo = async () => {
-      const res =
-        userId === authUser._id
-          ? { data: authUser }
-          : await axios.get(`/user/get_user_info?userId=${userId}`);
+      const res = await axios.get(`/user/get_user_info?userId=${userId}`);
       setUser(res.data);
     };
     getUserInfo();
     return () => {
       setUser({});
     };
-  }, [userId, authUser, token]);
+  }, [userId, token]);
 
   useEffect(() => {
     setFollowed(authUser.followings?.includes(user?._id));
@@ -77,15 +74,15 @@ const Profile = () => {
           </div>
           <div className='profile__header__info'>
             <div className='profile__header__left'>
-              <AvatarLarg imgSrc={user.avatar} />
+              <AvatarLarg imgsrc={user.avatar} />
               <div className='name'>
                 <h2>{user.username}</h2>
                 <p>{user?.followings?.length} bạn bè</p>
                 <div className='profile__friend'>
-                  <Avatar imgSrc={user.avatar} />
-                  <Avatar imgSrc={user.avatar} />
-                  <Avatar imgSrc={user.avatar} />
-                  <Avatar imgSrc={user.avatar} />
+                  <Avatar imgsrc={user.avatar} />
+                  <Avatar imgsrc={user.avatar} />
+                  <Avatar imgsrc={user.avatar} />
+                  <Avatar imgsrc={user.avatar} />
                 </div>
               </div>
             </div>

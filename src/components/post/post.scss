@@ -29,6 +29,31 @@
       justify-content: center;
       border-radius: 50%;
       cursor: pointer;
+      position: relative;
+
+      .post__model-action {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 12px;
+        background-color: $white;
+        box-shadow: $box-shadow;
+
+        p {
+          padding: 8px;
+          color: $secondary-text;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 20px;
+          cursor: pointer;
+          border-radius: 4px;
+          width: 200px;
+
+          &:hover {
+            background-color: $body-bg;
+          }
+        }
+      }
     }
 
     .post__icon:hover {
@@ -52,7 +77,7 @@
     .post__display {
       display: flex;
       justify-content: space-between;
-      padding: 4px 0;
+      padding: 4px 10px;
     }
 
     .divider {
@@ -70,7 +95,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 5px 0;
+        padding: 6px 0;
         cursor: pointer;
         border-radius: 4px;
 

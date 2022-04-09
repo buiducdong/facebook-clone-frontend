@@ -21,7 +21,6 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const auth = useSelector((state) => state.auth);
-  const token = useSelector((state) => state.token);
   const { user } = auth;
   const dispatch = useDispatch();
 
@@ -66,7 +65,7 @@ const Header = () => {
         </div>
         <div>
           <Link to={`/profile/${user._id}`} className='header__info'>
-            <Avatar imgSrc={user.avatar} />
+            <Avatar imgsrc={user.avatar} />
             <span>{auth ? user.username : 'noname'}</span>
           </Link>
         </div>
@@ -84,7 +83,7 @@ const Header = () => {
           {showLogout && (
             <div className='logout__model'>
               <div className='info'>
-                <AvatarMidium imgSrc={user.avatar} />
+                <AvatarMidium imgsrc={user.avatar} />
                 <div className='info__text'>
                   <h4 className='username'>{auth ? user.username : 'bronze'}</h4>
                   <p>Xem trang cá nhân của bạn</p>
