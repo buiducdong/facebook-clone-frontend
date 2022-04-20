@@ -16,6 +16,10 @@
       flex: 1;
       margin-left: 10px;
 
+      .post__name {
+        display: inline-block;
+      }
+
       .post__date {
         font-size: 12px;
       }

@@ -1,18 +1,40 @@
 @use '../../scss/' as *;
 
 .story {
-  height: 300px;
-  background-color: $green;
+  height: 280px;
   width: 590px;
-  display: flex;
-  padding: 20px 0;
+  display: grid;
+  padding: 30px 0;
+  grid-template-columns: calc(20% - 10px) auto auto auto auto;
+  column-gap: 10px;
 
   &__item {
-    background-color: $blue;
-    height: 50px;
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
+    background-color: $white;
+    height: 220px;
     cursor: pointer;
+    border-radius: 14px;
+    box-shadow: $box-shadow;
+    position: relative;
+    overflow: hidden;
+    img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__auth-avatar {
+    img {
+      height: 80%;
+    }
+    .addIcon {
+      color: $blue;
+      padding: 2px;
+      border-radius: 50%;
+      font-size: 40px;
+      margin: 0 auto;
+      width: 100%;
+      transform: translateY(-50%);
+    }
   }
 }

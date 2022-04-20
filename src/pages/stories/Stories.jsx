@@ -35,9 +35,9 @@ const Stories = () => {
       </Swiper> */}
       <div className='stories__sidebar'>
         <div className='stories__sidebar__header'>
-          <div className='stories__sidebar__header-close'>
+          <Link to={'/'} className='stories__sidebar__header-close'>
             <CloseIcon />
-          </div>
+          </Link>
           <div className='stories__sidebar__header-logo'>
             <img
               src='https://res.cloudinary.com/bonba/image/upload/v1646627124/facebook-clone/logo-facebook_g92m4j.png'
