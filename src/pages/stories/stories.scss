@@ -1,0 +1,54 @@
+@use '../../scss/' as *;
+
+.stories {
+  display: flex;
+  &__sidebar {
+    width: 400px;
+    height: 100vh;
+    position: fixed;
+    padding: 10px;
+    background-color: $white;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    &__header-logo img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    &__header-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $gray-icon;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    &__header-close:hover {
+      background-color: $gray;
+    }
+
+    &__header::before {
+      content: '';
+      position: absolute;
+      top: calc(5px + 100%);
+      right: 0;
+      left: 0;
+      height: 1px;
+      background-color: $divider;
+    }
+  }
+
+  &__container {
+    flex: 1;
+  }
+}

@@ -4,6 +4,7 @@ import Share from '../share/Share';
 import './feed.scss';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import Story from '../story/Story';
 
 const Feed = ({ userId }) => {
   const auth = useSelector((state) => state.auth);
@@ -34,6 +35,7 @@ const Feed = ({ userId }) => {
   const FeedHome = () => {
     return (
       <div className='feed'>
+        <Story />
         <Share />
         {posts.map((post) => (
           <Post key={post._id} post={post} />

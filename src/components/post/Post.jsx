@@ -41,8 +41,9 @@ const Post = ({ post, username }) => {
   useEffect(() => {
     const fetchPost = async () => {
       const res = await axios.get('/comment/getComment/' + post._id);
+      const totalCmt = res.data;
       setComment(
-        res.data.sort((cmt1, cmt2) => {
+        totalCmt.sort((cmt1, cmt2) => {
           return new Date(cmt2.createdAt) - new Date(cmt1.createdAt);
         })
       );
