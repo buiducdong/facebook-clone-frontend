@@ -6,6 +6,7 @@ import ActivateEmail from './pages/authPage/ActivateEmail';
 import { useSelector } from 'react-redux';
 import Profile from './pages/profile/Profile';
 import Stories from './pages/stories/Stories';
+import Create from './pages/stories/Create';
 
 function App() {
   const auth = useSelector((state) => state.auth);
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<LoginPage />}></Route>
       <Route index element={isLogged ? <HomePage /> : <LoginPage />} />
       <Route path='/stories/:idUser' element={isLogged ? <Stories /> : <LoginPage />} />
+      <Route path='/stories/create' element={isLogged ? <Create /> : <LoginPage />} />
       <Route path='/user/activation/:activation_token' element={<ActivateEmail />} />
       <Route
         path='/profile/:userId'

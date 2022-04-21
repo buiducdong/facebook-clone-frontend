@@ -1,0 +1,135 @@
+@use '../../scss/' as *;
+
+.create {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  &__sidebar {
+    width: 360px;
+    height: 100vh;
+    position: fixed;
+    padding: 10px 20px;
+    background-color: $white;
+    box-shadow: $box-shadow;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    &__header-logo img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    &__header-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $gray-icon;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    &__header-close:hover {
+      background-color: $gray;
+    }
+
+    &__header::before {
+      content: '';
+      position: absolute;
+      top: calc(5px + 100%);
+      right: -20px;
+      left: -20px;
+      height: 1px;
+      background-color: $divider;
+    }
+
+    &__setting {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      justify-content: space-between;
+
+      .icon {
+        cursor: pointer;
+        padding: 10px;
+        box-sizing: content-box;
+        background-color: $gray-icon;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: gray;
+        }
+      }
+    }
+
+    &__authInfo {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-bottom: 30px;
+
+      p {
+        margin-left: 10px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(5px + 100%);
+        right: -20px;
+        left: -20px;
+        height: 1px;
+        background-color: $divider;
+      }
+    }
+  }
+
+  &__container {
+    margin-left: 360px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .str {
+      height: 330px;
+      width: 220px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        color: $white;
+      }
+
+      .icon {
+        padding: 10px;
+        box-sizing: content-box;
+        background-color: $white;
+        border-radius: 50%;
+        transform: translateY(-10px);
+      }
+    }
+    &__image {
+      background-image: linear-gradient(to bottom right, #6448ee, #8bd8ff);
+      margin-right: 5px;
+    }
+
+    &__document {
+      background-image: linear-gradient(to bottom left, #a748d8, #e6537f);
+      margin-left: 5px;
+    }
+  }
+}
