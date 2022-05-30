@@ -33,7 +33,15 @@ const LoginPage = () => {
     setIsFetching(true);
     e.preventDefault();
     try {
-      const res = await axios.post('/user/login', { email, password });
+      const res = await axios.post(
+        '/user/login',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+        { email, password }
+      );
       setUser({ ...user, success: res.data.msg, err: '' });
       localStorage.setItem('firstLogin', true);
 

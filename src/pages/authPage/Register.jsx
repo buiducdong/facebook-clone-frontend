@@ -31,7 +31,15 @@ const Register = ({ handleClose }) => {
       return setUser({ ...user, err: 'Password dit not match', success: '' });
     }
     try {
-      const res = await axios.post('/user/register', { email, username, password });
+      const res = await axios.post(
+        '/user/register',
+        { email, username, password },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       setUser({ ...user, success: res.data.msg, err: '' });
     } catch (err) {
       err.response.data.msg &&

@@ -10,7 +10,15 @@ const ActivateEmail = () => {
     if (activation_token) {
       const activationEmail = async () => {
         try {
-          const res = await axios.post('/user/activation', { activation_token });
+          const res = await axios.post(
+            '/user/activation',
+            { activation_token },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          );
           setSuccess(res.data.msg);
           setErr('');
         } catch (err) {
