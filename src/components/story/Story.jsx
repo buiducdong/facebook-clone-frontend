@@ -1,37 +1,54 @@
 import './story.scss';
-import React from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-const Story = () => {
+const Story = ({ story }) => {
+  // store redux
   const auth = useSelector((state) => state.auth);
   const { user } = auth;
-  const stories = [
-    { id: 1, name: 'story1' },
-    { id: 2, name: 'story2' },
-    { id: 3, name: 'story3' },
-    { id: 4, name: 'story4' },
-  ];
+
   return (
     <div className='story'>
       <Link to={`/stories/create`} className='story__item story__auth-avatar'>
         <img src={user?.avatar} alt='avatar' />
         <AddCircleIcon className='addIcon' />
       </Link>
-      {stories.map((story) => (
-        <Link to={`/stories/${story.id}`} key={story.id} className='story__item'>
-          <p>{story.id}</p>
-          <h3>{story.name}</h3>
-          <img
-            src='https://res.cloudinary.com/bonba/image/upload/v1649341034/facebook-clone/posts/ce6pafbuxawhihejyr83.jpg'
-            alt='story'
-          />
-        </Link>
+      {story.map((storyy, i) => (
+        <StoryItem key={i} story={storyy} />
       ))}
     </div>
   );
 };
 
-export default Story;
+const StoryItem = ({ story }) => {
+  const [userStory, setUserStory] = useState({});
+
+  useEffect(() => {
+    const fetUser = async () => {
+      try {
+        const res = await axios.get(`/user/get_user_info?userId=${story.userId}`);
+        setUserStory(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetUser();
+
+    return () => {
+      setUserStory({});
+    };
+  }, [story]);
+
+  return (
+    <Link to={`/stories/${story.id}`} key={story.id} className='story__item'>
+      <p>{userStory?.username}</p>
+      <img src={story.image} alt='story' />
+    </Link>
+  );
+};
+
+export default memo(Story);

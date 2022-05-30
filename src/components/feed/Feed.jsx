@@ -7,10 +7,15 @@ import { useSelector } from 'react-redux';
 import Story from '../story/Story';
 
 const Feed = ({ userId }) => {
+  // store redux
   const auth = useSelector((state) => state.auth);
   const { user } = auth;
-  const [posts, setPosts] = useState([]);
 
+  // state
+  const [posts, setPosts] = useState([]);
+  const [story, setStory] = useState([]);
+
+  // get posts
   useEffect(() => {
     const getPost = async () => {
       try {
@@ -32,10 +37,27 @@ const Feed = ({ userId }) => {
     };
   }, [userId]);
 
+  // get stories
+  useEffect(() => {
+    try {
+      const getStory = async () => {
+        const res = await axios.get('/story/getStories');
+        setStory(res.data.splice(0, 4));
+      };
+      getStory();
+    } catch (err) {
+      console.log(err);
+    }
+
+    return () => {
+      setStory([]);
+    };
+  }, []);
+
   const FeedHome = () => {
     return (
       <div className='feed'>
-        <Story />
+        <Story story={story} />
         <Share />
         {posts.map((post) => (
           <Post key={post._id} post={post} />
