@@ -73,7 +73,6 @@ const LoginPage = () => {
                 type='text'
                 placeholder='Email hoặc số điện thoại'
                 name='email'
-                id='email'
                 value={email}
                 onChange={handleChangeInput}
               />
@@ -83,13 +82,12 @@ const LoginPage = () => {
                 type='password'
                 placeholder='Mật khẩu'
                 name='password'
-                id='password'
                 value={password}
                 onChange={handleChangeInput}
               />
             </div>
             <div className='login__btn'>
-              <button disabled={isFetching} type='submit' name='loginbtn' id='loginbtn'>
+              <button disabled={isFetching} type='submit' name='loginbtn'>
                 {isFetching ? (
                   <CircularProgress size={20} color={'inherit'} />
                 ) : (
