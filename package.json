@@ -45,5 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://facebook-clone-server-bronze.herokuapp.com"
+  "proxy": "http://localhost:7000"
 }

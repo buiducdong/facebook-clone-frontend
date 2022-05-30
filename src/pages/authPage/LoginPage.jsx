@@ -35,12 +35,12 @@ const LoginPage = () => {
     try {
       const res = await axios.post(
         '/user/login',
+        { email, password },
         {
           headers: {
             'Content-Type': 'application/json',
           },
-        },
-        { email, password }
+        }
       );
       setUser({ ...user, success: res.data.msg, err: '' });
       localStorage.setItem('firstLogin', true);
