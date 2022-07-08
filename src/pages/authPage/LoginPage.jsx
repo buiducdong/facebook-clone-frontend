@@ -13,8 +13,8 @@ const LoginPage = () => {
   };
 
   const initialState = {
-    email: '',
-    password: '',
+    email: 'dongbuiduc620@gmail.com',
+    password: '12341234',
     success: '',
     err: '',
   };

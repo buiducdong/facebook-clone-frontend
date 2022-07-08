@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import './header.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
@@ -18,6 +18,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import ACTIONS from '../../redux/actions';
 import { Link } from 'react-router-dom';
+import ChatFriendList from '../chatFriendList/ChatFriendList';
+import {
+  GET_CONVERSATION_RESET,
+  MESSENGER_LIST_RESET,
+} from '../../redux/constants/conversationContants';
 
 const Header = () => {
   const auth = useSelector((state) => state.auth);
@@ -25,6 +30,19 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [showLogout, setShowLogout] = useState(false);
+  const [showMesseger, setShowMessenger] = useState(false);
+
+  useEffect(() => {
+    const isShowModel = () => {
+      showMesseger && setShowMessenger(!showMesseger);
+      showLogout && setShowLogout(false);
+    };
+    window.addEventListener('click', isShowModel);
+
+    return () => {
+      window.removeEventListener('click', isShowModel);
+    };
+  }, [showMesseger, showLogout]);
 
   const handleLogout = async () => {
     try {
@@ -32,7 +50,17 @@ const Header = () => {
       localStorage.removeItem('firstLogin');
       localStorage.removeItem('fb_user');
       dispatch({ type: ACTIONS.LOGOUT });
+      dispatch({ type: GET_CONVERSATION_RESET });
+      dispatch({ type: MESSENGER_LIST_RESET });
     } catch (err) {}
+  };
+
+  const handleShowMessenger = () => {
+    setShowMessenger(!showMesseger);
+  };
+
+  const handleShowLogout = () => {
+    setShowLogout(!showLogout);
   };
   return (
     <div className='header'>
@@ -72,13 +100,13 @@ const Header = () => {
         <div className='header__icon'>
           <AppsIcon />
         </div>
-        <div className='header__icon'>
+        <div className='header__icon' onClick={handleShowMessenger}>
           <MessageIcon />
         </div>
         <div className='header__icon'>
           <NotificationsIcon />
         </div>
-        <div className='header__icon' onClick={() => setShowLogout(!showLogout)}>
+        <div className='header__icon' onClick={handleShowLogout}>
           <ArrowDropDownIcon />
           {showLogout && (
             <div className='logout__model'>
@@ -138,6 +166,7 @@ const Header = () => {
           )}
         </div>
       </div>
+      {showMesseger && <ChatFriendList />}
     </div>
   );
 };

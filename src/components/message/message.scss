@@ -1,0 +1,50 @@
+@use '../../scss/' as *;
+
+.message {
+  margin-top: 1rem;
+
+  &:hover .message__container__action {
+    opacity: 1;
+  }
+  & > p {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    &__text {
+      padding: 10px;
+      background-color: $body-bg;
+      border-radius: 16px;
+      margin-left: 10px;
+    }
+
+    &__action {
+      display: flex;
+      opacity: 0;
+
+      & * {
+        color: $gray;
+        cursor: pointer;
+        padding: 3px;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: $gray-icon;
+        }
+      }
+    }
+  }
+
+  &__container.auth {
+    flex-flow: row-reverse;
+
+    .message__container__text {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+}

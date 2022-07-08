@@ -1,0 +1,92 @@
+@use '../../scss/' as *;
+
+.messengerDialog {
+  background-color: $white;
+  box-shadow: $box-shadow;
+  border-radius: 5px 5px 0 0;
+  width: 340px;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__header {
+    padding-left: 8px;
+    box-shadow: $box-shadow;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    &__info {
+      margin-left: 10px;
+      flex: 1;
+      > h2 {
+        font-size: 16px;
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+
+    &__action {
+      display: flex;
+
+      span {
+        margin-right: 4px;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $body-bg;
+
+          &:hover svg {
+            color: $blue-btn;
+          }
+        }
+      }
+    }
+  }
+
+  &__body {
+    overflow-y: scroll;
+    height: 360px;
+    padding: 5px;
+  }
+
+  &__bottom {
+    width: 100%;
+    box-shadow: $box-shadow;
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0px 5px;
+
+    & > * {
+      margin-right: 10px;
+    }
+
+    &__search {
+      outline: none;
+      border: none;
+      padding: 6px;
+      background-color: $gray-icon;
+      border-radius: 50px;
+      flex: 1;
+    }
+
+    &__icon,
+    button {
+      color: $blue-btn;
+      cursor: pointer;
+    }
+  }
+}

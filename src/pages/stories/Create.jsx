@@ -85,7 +85,9 @@ const Create = () => {
             </div>
             <div className='create__sidebar__bottom'>
               <span onClick={() => setFile(false)}>Bỏ</span>
-              <span onClick={handleSubmit}>{loading ? 'is loading' : 'Chia sẻ lên tin'}</span>
+              <span onClick={handleSubmit}>
+                {loading ? 'is loading' : 'Chia sẻ lên tin'}
+              </span>
             </div>
           </>
         )}

@@ -1,0 +1,65 @@
+@use '../../scss/' as *;
+
+.chatFriendList {
+  position: absolute;
+  top: 100%;
+  right: 0.5rem;
+  width: 350px;
+  background-color: $white;
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+  padding: 10px;
+  max-height: calc(100vh - $header-heigh - 10px);
+  overflow-y: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__search {
+    input {
+      outline: none;
+      padding: 12px 6px;
+      width: 100%;
+      border-radius: 10px;
+      background-color: $body-bg;
+      border: none;
+      margin: 4px 0;
+    }
+  }
+  &__body {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 5px 0;
+    height: calc(100vh - $header-heigh - 200px);
+    .chatFriend {
+      display: flex;
+      border-radius: 4px;
+      padding: 10px;
+      cursor: pointer;
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+      &:hover {
+        background-color: $body-bg;
+      }
+
+      &__avatar {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        margin-right: 20px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      &__info {
+      }
+    }
+  }
+}

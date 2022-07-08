@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect, memo, useRef } from 'react';
 import './homePage.scss';
 import Headers from '../../components/header/Header';
 import SideBar from '../../components/sidebar/SideBar';
@@ -6,16 +6,19 @@ import Feed from '../../components/feed/Feed';
 import RightBar from '../../components/rightBar/RightBar';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { io } from 'socket.io-client';
 import {
   dispatchLogin,
   dispatchGetUser,
   fetchUser,
 } from '../../redux/actions/authAction';
+import MessengerDialogBox from '../../components/messengerDialogBox/MessengerDialogBox';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const auth = useSelector((state) => state.auth);
+  const socket = useRef();
 
   useEffect(() => {
     const firstLogin = localStorage.getItem('firstLogin');
@@ -25,14 +28,13 @@ const HomePage = () => {
         dispatch({ type: 'GET_TOKEN', payload: res.data.access_token });
       };
       getToken();
-      console.log('get Token');
     }
   }, [auth.isLogged, dispatch]);
 
   useEffect(() => {
     if (token) {
       const getUser = () => {
-        dispatch(dispatchLogin());
+        // dispatch(dispatchLogin());
         return fetchUser(token).then((res) => {
           dispatch(dispatchGetUser(res));
         });
@@ -46,6 +48,19 @@ const HomePage = () => {
   useEffect(() => {
     localStorage.setItem('fb_user', JSON.stringify(user));
   }, [user]);
+
+  // connect socket
+  useEffect(() => {
+    socket.current = io('ws://localhost:8000');
+  }, []);
+
+  // list user online
+  useEffect(() => {
+    auth.user && socket.current.emit('addUser', auth.user._id);
+    socket.current.on('listUser', (users) => console.log(users));
+  }, [auth.user, socket]);
+
+  console.log(socket);
   return (
     <>
       <Headers />
@@ -54,6 +69,7 @@ const HomePage = () => {
         <Feed />
         <RightBar />
       </div>
+      <MessengerDialogBox socket={socket} />
     </>
   );
 };

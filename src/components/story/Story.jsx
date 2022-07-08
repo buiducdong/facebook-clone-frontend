@@ -26,6 +26,9 @@ const Story = ({ story }) => {
 
 const StoryItem = ({ story }) => {
   const [userStory, setUserStory] = useState({});
+  // store redux
+  const auth = useSelector((state) => state.auth);
+  const { user } = auth;
 
   useEffect(() => {
     const fetUser = async () => {
@@ -44,7 +47,7 @@ const StoryItem = ({ story }) => {
   }, [story]);
 
   return (
-    <Link to={`/stories/${story.id}`} key={story.id} className='story__item'>
+    <Link to={`/stories/${user._id}`} key={story.id} className='story__item'>
       <p>{userStory?.username}</p>
       <img src={story.image} alt='story' />
     </Link>

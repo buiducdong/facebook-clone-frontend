@@ -15,7 +15,7 @@ function App() {
     <Routes>
       <Route path='/' element={<LoginPage />}></Route>
       <Route index element={isLogged ? <HomePage /> : <LoginPage />} />
-      <Route path='/stories/:idUser' element={isLogged ? <Stories /> : <LoginPage />} />
+      <Route path='/stories/:userId' element={isLogged ? <Stories /> : <LoginPage />} />
       <Route path='/stories/create' element={isLogged ? <Create /> : <LoginPage />} />
       <Route path='/user/activation/:activation_token' element={<ActivateEmail />} />
       <Route

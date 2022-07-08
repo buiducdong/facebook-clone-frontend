@@ -1,7 +1,7 @@
 import ACTIONS from '../actions';
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('fb_user')) || [],
+  user: JSON.parse(localStorage.getItem('fb_user')) || {},
   isLogged: JSON.parse(localStorage.getItem('firstLogin')) || false,
   isAdmin: false,
 };
@@ -21,7 +21,7 @@ const authReducer = (state = initialState, action) => {
       };
     case ACTIONS.LOGOUT:
       return {
-        user: [],
+        user: {},
         isLogged: false,
         isAdmin: false,
       };

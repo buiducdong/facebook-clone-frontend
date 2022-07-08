@@ -1,0 +1,11 @@
+@use '../../scss/' as *;
+
+.MessengerDialogBox {
+  position: absolute;
+  z-index: 5;
+  top: 40vh;
+  right: 2rem;
+  position: fixed;
+  display: flex;
+  height: 60vh;
+}

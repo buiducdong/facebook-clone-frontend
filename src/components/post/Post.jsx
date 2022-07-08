@@ -113,10 +113,12 @@ const Post = ({ post, username }) => {
         </div>
         <div className='post__icon' onClick={() => setModelPost(!modelPost)}>
           <MoreHorizIcon />
-          {modelPost && (
+          {modelPost && post.userId === authUser._id && (
             <div className='post__model-action'>
-              <p onClick={handlePostAction}>Xóa bài viết</p>
-              <p>Sửa bài viết</p>
+              <>
+                <p onClick={handlePostAction}>Xóa bài viết</p>
+                <p>Sửa bài viết</p>
+              </>
             </div>
           )}
         </div>
@@ -160,18 +162,18 @@ const Post = ({ post, username }) => {
             onClick={handleLikePost}
           >
             <ThumbUpAltIcon />
-            <span>Thich</span>
+            <span>Thích</span>
           </div>
           <div
             className='post__action-icon'
             onClick={() => setDisplayComment(!displayComment)}
           >
             <ChatBubbleOutlineIcon />
-            <span>Binh luan</span>
+            <span>Bình luận</span>
           </div>
           <div className='post__action-icon'>
             <ShareIcon />
-            <span>Chia se</span>
+            <span>Chia sẻ</span>
           </div>
         </div>
         {displayComment && (
